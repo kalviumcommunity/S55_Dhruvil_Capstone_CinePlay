@@ -1,0 +1,65 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.login-signup {
+    font-weight: bold;
+}
+
+.site-introduction {
+    text-align: center;
+    padding: 50px;
+    background-color: #f1f1f1;
+}
+
+.site-introduction h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.site-introduction p {
+    font-size: 18px;
+    color: #777;
+}
+
+
+.sections {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20%;
+}
+
+.movies-section,
+.games-section {
+    padding: 20px;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    background-color: #b64e4e;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.movies-section a,
+.games-section a {
+    text-decoration: none;
+    color: #28e138;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* .games-section {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Av5oqAaR-m8ne4vOmsxaIygF79oiNUW7st4rjE3Q0w&s');
+    background-size: cover;
+    background-position: center;
+} */
