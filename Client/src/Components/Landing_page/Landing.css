@@ -1,9 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+*{
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.landing{
+    height: 100vh;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #d89595;
 }
 
 .logo {
@@ -17,9 +30,13 @@ nav {
 }
 
 .site-introduction {
+    background-image: linear-gradient(to bottom, rgba(161, 125, 125, 0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1622737133809-d95047b9e673?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    height: 92%;
     text-align: center;
     padding: 50px;
     background-color: #f1f1f1;
+    background-size: cover;
+    background-position: center;
 }
 
 .site-introduction h1 {
@@ -34,16 +51,22 @@ nav {
 
 
 .sections {
+    position: absolute; 
+    top: 40vh;
+    left: 0; 
+    right: 0; 
+    z-index: 1;
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 20%;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 8%;
 }
 
 .movies-section,
 .games-section {
-    padding: 20px;
-    height: 100px;
-    width: 100px;
+    padding: 70px;
+    height: 300px;
+    width: 400px;
     text-align: center;
     background-color: #b64e4e;
     border-radius: 10px;
@@ -58,3 +81,24 @@ nav {
     font-size: 20px;
 }
 
+
+.logo {
+    height: 70px;
+    width: 150px;
+    margin: 0px;
+}
+
+.login-signup {
+    margin-right: 15px;
+    background-color: #dfd6d6;
+    padding: 12px;
+    display: flex;
+    border-radius: 20px;
+}
+
+.login-signup img {
+    height: 30px;
+    width: 30px;
+    margin-right: 6px;
+    margin-top: -2px;
+}
