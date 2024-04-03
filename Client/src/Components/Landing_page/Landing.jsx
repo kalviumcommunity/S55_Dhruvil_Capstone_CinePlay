@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Landing.css'
+import Logo from '../../assets/logo1.png'
+import Login from '../../assets/login.png'
 
 const Landing = () => {
     return (
-        <div>
+        <div  className="landing">
             <nav>
-                <div className="logo">Logo</div>
-                <div className="login-signup">Login/Signup</div>
+                <img className='logo'  src={Logo} alt="Cineplay-logo" />
+                <div className="login-signup" >
+                   <img  src={Login} alt="Login-img" />
+                    Login/Signup
+                </div>
             </nav>
 
             <div className="site-introduction">
                 <h1>Welcome to CinePlay!</h1>
-                <p>Introduction of the site here...</p>
+                <p>My capstone project is a movie and game exploration website called CinePlay. It allows users to explore and discover movies and games, with options to add them to their watchlist. The goal of the website is to provide users with a fun and enjoyable experience while exploring the world of movies and games.</p>
             </div>
 
             <div className="sections">
