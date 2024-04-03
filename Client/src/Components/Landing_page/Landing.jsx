@@ -8,9 +8,9 @@ const Landing = () => {
     return (
         <div  className="landing">
             <nav>
-                <img className='logo'  src={Logo} alt="" />
+                <img className='logo'  src={Logo} alt="Cineplay-logo" />
                 <div className="login-signup" >
-                   <img  src={Login} alt="" />
+                   <img  src={Login} alt="Login-img" />
                     Login/Signup
                 </div>
             </nav>
