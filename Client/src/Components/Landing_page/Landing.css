@@ -64,10 +64,12 @@ nav {
 
 .movies-section,
 .games-section {
+    display: flex;
     padding: 70px;
     height: 300px;
     width: 400px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     background-color: #b64e4e;
     border-radius: 10px;
     margin: 0 10px;
@@ -78,7 +80,7 @@ nav {
     text-decoration: none;
     color: #28e138;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 2.5rem;
 }
 
 .games-section{
@@ -186,3 +188,33 @@ nav {
 p{
     margin-right: 15px;
 }
+
+/* @media screen and (max-width: 768px) {
+    .landing{
+        height: 150vh;
+    }
+    
+    .site-introduction {
+        padding: 20px;
+    }
+
+    .site-introduction h1 {
+        font-size: 24px;
+    }
+
+    .site-introduction p {
+        font-size: 16px;
+    }
+
+    .sections {
+        flex-direction: column;
+        top: 50vh;
+    }
+
+    .movies-section,
+    .games-section {
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 10px 0;
+    }
+} */
