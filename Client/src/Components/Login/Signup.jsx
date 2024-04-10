@@ -1,54 +1,45 @@
-import { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
-import './Signup.css'
 import axios from 'axios';
+import './Signup.css';
 
-function Login() {
+function Signup() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
-  const [loginMessage, setLoginMessage] = useState('');
+  const [signupError, setSignupError] = useState('');
 
-  useEffect(() => {
-    let timer;
-    if (loginMessage) {
-      timer = setTimeout(() => {
-        setLoginMessage('');
-      }, 3000);
-    }
-    return () => clearTimeout(timer);
-  }, [loginMessage]);
-
-const handleSignup = () => {
-    navigate("/signup");
-};
+  const handleLogin = (event) => {
+    event.preventDefault();
+    navigate("/login");
+  };
 
   const onSubmit = async (data) => {
     const { username, password } = data;
     try {
       if (password.length < 6) {
-        setLoginMessage("Password should be more than 5 characters");
+        setSignupError("Password should be more than 5 characters");
         return;
       }
-
-      const response = await axios.post(`https://cineplay-ltct.onrender.com/login`, { username, password });
-      if (response.status === 200) {
+  
+      const response = await axios.post(`https://cineplay-ltct.onrender.com/signup`, { username, password });
+      if (response.status === 201) {
         sessionStorage.setItem('username', username);
-        sessionStorage.setItem('loginSuccess', 'Login successful');
         sessionStorage.setItem('login', true);
+        sessionStorage.setItem('signupSuccess', 'Signup successful');
         navigate("/");
       } else {
-        setLoginMessage('Invalid Credentials');
+        setSignupError('Signup failed');
       }
     } catch (err) {
       console.error(err);
-      setLoginMessage('Invalid Credentials');
+      setSignupError('An error occurred during the signup');
     }
   };
 
   return (
     <div className="center">
-      <h1>Login</h1>
+      <h1>Signup</h1>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="txt_field">
           <input type="text" {...register("username", { required: true })} />
@@ -69,13 +60,13 @@ const handleSignup = () => {
           <label>Password</label>
         </div>
         {errors.password && <p className="error">{errors.password.message}</p>}
-        {loginMessage && <div className="error-message">{loginMessage}</div>}
+        {signupError && <p className="error">{signupError}</p>}
 
-        <input type="submit" value="Login" className="button" />
-        <div className="signup_link">Not a member? <Link to="/signup" onClick={handleSignup}>Signup</Link></div>
+        <input type="submit" value="Signup" className="button" />
+        <div className="signup_link">Alredy a member? <Link to="/login" onClick={handleLogin}>Login</Link></div>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Signup;

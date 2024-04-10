@@ -16,12 +16,14 @@ router.post('/signup', async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, 10); // Hashing the password
         const newUser = await UserModel.create({ username, password: hashedPassword });
-        res.status(201);
+        // Send a response indicating successful signup
+        res.status(201).json({ message: 'Signup successful', user: newUser });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: error.message }); 
     }
 });
+
 
 // Login route with bcrypt password verification and JWT tokenization
 router.post('/login', async (req, res) => {
