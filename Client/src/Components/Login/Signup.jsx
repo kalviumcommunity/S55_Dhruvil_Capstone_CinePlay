@@ -17,10 +17,11 @@ function Signup() {
   const onSubmit = async (data) => {
     const { username, password } = data;
     try {
-      if (password.length < 6) {
-        setSignupError("Password should be more than 5 characters");
+      if (!/(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])/.test(password)) {
+        setSignupError("Password must contain at least one letter, one number, and one special character");
         return;
       }
+
   
       const response = await axios.post(`https://cineplay-ltct.onrender.com/signup`, { username, password });
       if (response.status === 201) {
@@ -28,6 +29,7 @@ function Signup() {
         sessionStorage.setItem('login', true);
         sessionStorage.setItem('signupSuccess', 'Signup successful');
         navigate("/");
+        window.location.href = "/";
       } else {
         setSignupError('Signup failed');
       }
