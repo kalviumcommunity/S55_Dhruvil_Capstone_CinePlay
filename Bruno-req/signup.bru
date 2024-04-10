@@ -5,7 +5,14 @@ meta {
 }
 
 post {
-  url: 
-  body: none
+  url: http://localhost:3000/signup
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "username" : "Alpachino3",
+    "password": "12345678"
+  }
 }

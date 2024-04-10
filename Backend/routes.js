@@ -3,11 +3,18 @@ const router = express.Router();
 const { UserModel } = require('./UserSchema');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const rateLimit = require('express-rate-limit');
 
 router.use(express.json());
 
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, 
+    max: 100, 
+    message: 'Too many requests from this IP, please try again later'
+  });
 // Signup route with bcrypt password hashing
-router.post('/signup', async (req, res) => {
+router.post('/signup', limiter, async (req, res) => {
     try {
         const { username, password } = req.body;
         const existingUser = await UserModel.findOne({ username });
@@ -16,15 +23,17 @@ router.post('/signup', async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, 10); // Hashing the password
         const newUser = await UserModel.create({ username, password: hashedPassword });
-        res.status(201);
+        // Send a response indicating successful signup
+        res.status(201).json({ message: 'Signup successful', user: newUser });
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
         res.status(500).json({ error: error.message }); 
     }
 });
 
+
 // Login route with bcrypt password verification and JWT tokenization
-router.post('/login', async (req, res) => {
+router.post('/login', limiter, async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await UserModel.findOne({ username });

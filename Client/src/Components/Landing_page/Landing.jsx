@@ -1,16 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Landing.css";
 import Logo from "../../assets/logo1.png";
 import Login from "../../assets/login.png";
 
+
 const Landing = () => {
+
+  const navigate = useNavigate();
+
+  const handleSignupClick = () => {
+    navigate("/signup");
+  };
+
+
   return (
     <div className="landing">
       <nav>
         <img className="logo" src={Logo} alt="Cineplay-logo" />
         <button className="custom-btn btn-11 ">
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" }} onClick={handleSignupClick}>
             <img className="login-img" src={Login} alt="Login-img" />
             <p>Login/Signup</p>
           </div>
