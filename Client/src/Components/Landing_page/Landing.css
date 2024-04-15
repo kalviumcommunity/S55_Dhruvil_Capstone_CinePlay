@@ -74,15 +74,6 @@ nav {
     margin: 0 10px;
 }
 
-.movies-section a,
-.games-section a {
-    visibility: hidden;
-    text-decoration: none;
-    color: #28e138;
-    font-weight: bold;
-    font-size: 2.5rem;
-}
-
 .games-section{
     background-image: url('https://wallpaperaccess.com/full/284976.jpg');
     background-size: cover;
@@ -105,11 +96,14 @@ nav {
 }
 
 .movies-section:hover a,
-.games-section:hover a {
+.movies-section:focus-within a,
+.games-section:hover a,
+.games-section:focus-within a {
     visibility: visible;
     opacity: 1;
     z-index: 2;
 }
+
 
 .movies-section:hover,
 .games-section:hover {
