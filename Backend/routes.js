@@ -15,9 +15,14 @@ const limiter = rateLimit({
   });
 
 // Defining the get request with JSON response
-router.get('/get', (req, res) => {
-    res.json({ message: 'this is an get req' });
-  });
+router.get('/info', (req, res) => {
+    try {
+        res.json({ message: 'this is a get request' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
   
 // Signup route with bcrypt password hashing
 router.post('/signup', limiter, async (req, res) => {
