@@ -13,6 +13,12 @@ const limiter = rateLimit({
     max: 100, 
     message: 'Too many requests from this IP, please try again later'
   });
+
+// Defining the get request with JSON response
+router.get('/get', (req, res) => {
+    res.json({ message: 'this is an get req' });
+  });
+  
 // Signup route with bcrypt password hashing
 router.post('/signup', limiter, async (req, res) => {
     try {

@@ -20,10 +20,9 @@ const connectToDB = async () => {
   } catch (err) {
     console.error('❌ MongoDB connection error:', err.message); 
   }
-};
+};     
 
 connectToDB();
-
 // Get the default connection
 const dbConnection = mongoose.connection;
 
