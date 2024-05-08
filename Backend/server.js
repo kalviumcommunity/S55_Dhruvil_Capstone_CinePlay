@@ -37,7 +37,7 @@ dbConnection.on('disconnected', () => {
 });
 
 dbConnection.on('reconnected', () => {
-  console.log('📦 MongoDB reconnected');
+  console.log('📦 MongoDB reconnected'); 
 });
 
 // Defining the ping route with JSON response
