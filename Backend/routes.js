@@ -15,9 +15,10 @@ const limiter = rateLimit({
   });
 
 // Defining the get request with JSON response
-router.get('/info', (req, res) => {
+router.get('/users', async (req, res) => {
     try {
-        res.json({ message: 'this is a get request' });
+        const users = await UserModel.find({}, 'username'); 
+        res.json(users);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
