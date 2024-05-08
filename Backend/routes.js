@@ -7,25 +7,29 @@ const rateLimit = require('express-rate-limit');
 
 router.use(express.json());
 
+// Error handling for undefined ACCESS_TOKEN_SECRET
+if (!process.env.ACCESS_TOKEN_SECRET) {
+    console.error('ACCESS_TOKEN_SECRET environment variable is not defined.');
+}
 
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, 
-    max: 100, 
+    windowMs: 15 * 60 * 1000,
+    max: 100,
     message: 'Too many requests from this IP, please try again later'
-  });
+});
 
 // Defining the get request with JSON response
 router.get('/users', async (req, res) => {
     try {
-        const users = await UserModel.find({}, 'username'); 
+        const users = await UserModel.find({}, 'username');
         res.json(users);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-  
-// Signup route with bcrypt password hashing
+
+// Signup route with bcrypt password hashing and rate limiting
 router.post('/signup', limiter, async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -39,10 +43,9 @@ router.post('/signup', limiter, async (req, res) => {
         res.status(201).json({ message: 'Signup successful', user: newUser });
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ error: error.message }); 
+        res.status(500).json({ error: error.message });
     }
 });
-
 
 // Login route with bcrypt password verification and JWT tokenization
 router.post('/login', limiter, async (req, res) => {
@@ -50,19 +53,21 @@ router.post('/login', limiter, async (req, res) => {
         const { username, password } = req.body;
         const user = await UserModel.findOne({ username });
         if (!user) {
+            console.log(`Login attempt failed for username: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
         const isPasswordValid = await bcrypt.compare(password, user.password); // Comparing hashed password
         if (!isPasswordValid) {
+            console.log(`Login attempt failed for username: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
-        const token = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET); 
+        console.log(`Login attempt successful for username: ${username}`);
+        const token = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET);
         res.status(200).json({ success: true, message: 'Login successful', token });
     } catch (error) {
-        console.error(error); 
-        res.status(500).json({ error: 'Internal server error' }); 
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
-
 
 module.exports = router;
