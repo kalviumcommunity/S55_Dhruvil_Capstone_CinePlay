@@ -13,6 +13,18 @@ const limiter = rateLimit({
     max: 100, 
     message: 'Too many requests from this IP, please try again later'
   });
+
+// Defining the get request with JSON response
+router.get('/users', async (req, res) => {
+    try {
+        const users = await UserModel.find({}, 'username'); 
+        res.json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+  
 // Signup route with bcrypt password hashing
 router.post('/signup', limiter, async (req, res) => {
     try {
