@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const { UserModel } = require('./UserSchema');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const rateLimit = require('express-rate-limit');
+
+const router = express.Router();
 
 router.use(express.json());
 
@@ -11,12 +11,6 @@ router.use(express.json());
 if (!process.env.ACCESS_TOKEN_SECRET) {
     console.error('ACCESS_TOKEN_SECRET environment variable is not defined.');
 }
-
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    message: 'Too many requests from this IP, please try again later'
-});
 
 // Defining the get request with JSON response
 router.get('/users', async (req, res) => {
@@ -29,8 +23,8 @@ router.get('/users', async (req, res) => {
     }
 });
 
-// Signup route with bcrypt password hashing and rate limiting
-router.post('/signup', limiter, async (req, res) => {
+// Signup route with bcrypt password hashing
+router.post('/signup', async (req, res) => {
     try {
         const { username, password } = req.body;
         const existingUser = await UserModel.findOne({ username });
@@ -48,7 +42,7 @@ router.post('/signup', limiter, async (req, res) => {
 });
 
 // Login route with bcrypt password verification and JWT tokenization
-router.post('/login', limiter, async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await UserModel.findOne({ username });
