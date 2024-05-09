@@ -3,7 +3,7 @@ const router = express.Router();
 const { UserModel } = require('./UserSchema');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const rateLimit = require('express-rate-limit');
+const limiter = require('./rateLimiter');
 
 router.use(express.json());
 
@@ -11,12 +11,6 @@ router.use(express.json());
 if (!process.env.ACCESS_TOKEN_SECRET) {
     console.error('ACCESS_TOKEN_SECRET environment variable is not defined.');
 }
-
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 50,
-    message: 'Too many requests from this IP, please try again later'
-});
 
 // Defining the get request with JSON response
 router.get('/users', async (req, res) => {
