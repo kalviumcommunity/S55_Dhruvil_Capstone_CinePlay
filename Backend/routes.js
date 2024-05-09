@@ -1,9 +1,9 @@
 const express = require('express');
+const router = express.Router();
 const { UserModel } = require('./UserSchema');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
-const router = express.Router();
+const limiter = require('./rateLimiter');
 
 router.use(express.json());
 
@@ -23,8 +23,8 @@ router.get('/users', async (req, res) => {
     }
 });
 
-// Signup route with bcrypt password hashing
-router.post('/signup', async (req, res) => {
+// Signup route with bcrypt password hashing and rate limiting
+router.post('/signup', limiter, async (req, res) => {
     try {
         const { username, password } = req.body;
         const existingUser = await UserModel.findOne({ username });
