@@ -45,6 +45,12 @@ app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
+// Define a POST route
+app.post('/post', (req, res) => {
+  const data = req.body; 
+  res.json({ message: 'Data received successfully', data });
+});
+
 // Home route to display database connection status
 app.get('/', (req, res) => {
   const connectionStatus = dbConnection.readyState === 1 ? 'connected' : 'disconnected';
