@@ -1,0 +1,17 @@
+meta {
+  name: post
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/post
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "greet" : "hello"
+  }
+}
