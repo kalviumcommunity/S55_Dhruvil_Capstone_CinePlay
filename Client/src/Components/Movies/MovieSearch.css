@@ -6,13 +6,7 @@
     margin: 0 auto;
   }
   
-  .movie-search-input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+
   
   .movie-search-results {
     position: absolute;
@@ -26,23 +20,7 @@
     padding: 0;
   }
   
-  .movie-search-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .movie-search-item:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .movie-search-poster {
-    width: 50px;
-    height: 75px;
-    margin-right: 10px;
-  }
+
   
   .movie-search-title {
     font-size: 16px;

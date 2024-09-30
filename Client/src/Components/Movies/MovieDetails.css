@@ -13,9 +13,7 @@
     padding: 20px;
   }
   
-.search-bar{
-  z-index: 3;
-}
+
 
   .movie-details-inner {
     display: flex;
@@ -30,29 +28,7 @@
     margin-right: 20px;
   }
   
-  .movie-info {
-    max-width: 600px;
-  }
-  
-  .movie-title {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .movie-tagline {
-    color: #00ff00;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  .movie-overview {
-    margin-bottom: 20px;
-  }
-  
-  .movie-genres,
-  .movie-details {
-    margin-bottom: 10px;
-  }
+
   
   .movie-details strong {
     color: #00ff00;
