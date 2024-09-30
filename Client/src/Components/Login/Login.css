@@ -1,0 +1,61 @@
+@media (max-width: 600px) {
+    .center {
+      width: 90%;
+      margin: 0 auto;
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 24px;
+      text-align: center;
+    }
+  
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .txt_field {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .txt_field input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  
+    .txt_field label {
+      font-size: 14px;
+    }
+  
+    .button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+    }
+  
+    .error {
+      font-size: 14px;
+      color: red;
+    }
+  
+    .error-message {
+      font-size: 14px;
+      color: red;
+      margin-top: 10px;
+    }
+  
+    .signup_link {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 15px;
+    }
+  
+    .signup_link a {
+      font-size: 14px;
+    }
+  }
+  
