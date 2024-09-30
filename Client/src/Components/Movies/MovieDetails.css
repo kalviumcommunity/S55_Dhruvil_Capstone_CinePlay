@@ -1,19 +1,23 @@
 /* MovieDetails.css */
 .movie-details-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #ce5454c4;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    padding: 20px;
-  }
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ce5454c4;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  align-content: space-around;
+  flex-direction: column;
+  justify-content: space-around;
+}
   
-
+.search-bar{
+  z-index: 3;
+}
 
   .movie-details-inner {
     display: flex;
@@ -28,9 +32,30 @@
     margin-right: 20px;
   }
   
-
-  
-  .movie-details strong {
-    color: #00ff00;
+  .movie-info {
+    max-width: 600px;
   }
   
+  .movie-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .movie-tagline {
+    color: #00ff00;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .movie-overview {
+    margin-bottom: 20px;
+  }
+  
+  .movie-genres,
+  .movie-details {
+    margin-bottom: 10px;
+  }
+  
+  .movie-details strong {
+    color:  #00ff00;
+  }

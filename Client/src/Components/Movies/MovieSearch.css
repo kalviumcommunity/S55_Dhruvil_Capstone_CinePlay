@@ -1,29 +1,52 @@
 /* MovieSearch.css */
 .movie-search-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-  
-  .movie-search-results {
-    position: absolute;
-    width: 100%;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 5px;
-    z-index: 1000;
-    list-style: none;
-    padding: 0;
-  }
-  
+.movie-search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
-  
-  .movie-search-title {
-    font-size: 16px;
-    color: #333;
+.movie-search-results {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  max-height: 400px; 
+  overflow-y: auto; 
+}
+
+.movie-search-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.movie-search-item:hover {
+  background-color: #f0f0f0;
+}
+
+.movie-search-poster {
+  width: 50px;
+  height: 75px;
+  margin-right: 10px;
+}
+
+.movie-search-title {
+  font-size: 16px;
+  color:  #333;
   }
-  
