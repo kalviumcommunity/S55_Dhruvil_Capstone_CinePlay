@@ -1,0 +1,10 @@
+/* index.css */
+
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;700;900&display=swap');
+
+/* Apply the font globally */
+body, html {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+}
