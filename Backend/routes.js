@@ -23,32 +23,6 @@ router.get('/users', async (req, res) => {
     }
 });
 
-
-router.put('/update/:username', async (req, res) => {
-    try {
-        const { username } = req.params;
-        const { newUsername, newPassword } = req.body;
-
-        const user = await UserModel.findOne({ username });
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        if (newUsername) user.username = newUsername;
-        if (newPassword) {
-            const hashedPassword = await bcrypt.hash(newPassword, 10);
-            user.password = hashedPassword;
-        }
-
-        await user.save();
-        res.status(200).json({ message: 'User updated successfully', user });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
-
-
 // Signup route with bcrypt password hashing and rate limiting
 router.post('/signup', limiter, async (req, res) => {
     try {
