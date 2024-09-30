@@ -222,32 +222,3 @@ p{
 }
 
 
-/* @media screen and (max-width: 768px) {
-    .landing{
-        height: 150vh;
-    }
-    
-    .site-introduction {
-        padding: 20px;
-    }
-
-    .site-introduction h1 {
-        font-size: 24px;
-    }
-
-    .site-introduction p {
-        font-size: 16px;
-    }
-
-    .sections {
-        flex-direction: column;
-        top: 50vh;
-    }
-
-    .movies-section,
-    .games-section {
-        flex-wrap: wrap;
-        width: 100%;
-        margin: 10px 0;
-    }
-} */
